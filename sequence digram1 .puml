@@ -1,0 +1,9 @@
+@startuml
+actor Staff
+entity "Hospital System" as System
+
+Staff -> System : Add Patient Record(patientDetails)
+System -> System : Validate patientDetails
+System -> System : Save patientRecord
+System -> Staff : Confirm Patient Record Added
+@enduml

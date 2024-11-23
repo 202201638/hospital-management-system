@@ -1,0 +1,10 @@
+@startuml
+actor Patient
+entity "Hospital System" as System
+entity "Doctor's Schedule" as Schedule
+
+Patient -> System : Schedule Appointment(appointmentDetails)
+System -> Schedule : Check availability
+Schedule -> System : Availability response
+System -> Patient : Confirm Appointment Scheduled
+@enduml

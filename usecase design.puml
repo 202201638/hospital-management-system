@@ -1,0 +1,55 @@
+@startuml
+left to right direction
+
+actor Staff
+actor Doctor
+actor Patient
+actor Admin
+
+package "Patient Data Management" {
+  usecase "Add Patient Record" as U1
+  usecase "Update Patient Record" as U2
+  usecase "Delete Patient Record" as U3
+}
+
+package "Appointment Management" {
+  usecase "Schedule Appointment" as U4
+  usecase "Cancel Appointment" as U5
+}
+
+package "Billing and Payment" {
+  usecase "Generate Bill" as U6
+}
+
+package "Reporting" {
+  usecase "Generate Report" as U7
+}
+
+package "Doctor Schedule Management" {
+  usecase "Manage Doctor Schedule" as U8
+}
+
+package "Patient Access" {
+  usecase "View Patient Medical Data" as U9
+}
+
+Staff --> U1
+Staff --> U2
+Staff --> U3
+Staff --> U6
+
+Doctor --> U1
+Doctor --> U2
+Doctor --> U3
+Doctor --> U7
+Doctor --> U4
+Doctor --> U5
+Doctor --> U8
+
+Patient --> U4
+Patient --> U5
+Patient --> U9
+
+Admin --> U7
+
+@enduml

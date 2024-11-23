@@ -1,0 +1,63 @@
+@startuml
+title Hospital Management System - Domain Model
+
+' Entities
+class Patient {
+    +patientId: int
+    +name: String
+    +age: int
+    +contactInfo: String
+    +medicalHistory: String
+}
+
+class Doctor {
+    +doctorId: int
+    +name: String
+    +specialization: String
+    +contactInfo: String
+    +schedule: List<Appointment>
+}
+
+class Staff {
+    +staffId: int
+    +name: String
+    +role: String
+    +contactInfo: String
+}
+
+class Appointment {
+    +appointmentId: int
+    +date: Date
+    +time: Time
+    +status: String
+}
+
+class Bill {
+    +billId: int
+    +amount: double
+    +services: String
+    +paymentStatus: String
+}
+
+class Report {
+    +reportId: int
+    +details: String
+    +date: Date
+}
+
+class Communication {
+    +communicationId: int
+    +message: String
+    +timestamp: DateTime
+}
+
+' Relationships
+Patient "1" --> "0..*" Appointment : schedules
+Doctor "1" --> "0..*" Appointment : manages
+Patient "1" --> "0..*" Bill : receives
+Doctor "1" --> "0..*" Report : generates
+Communication "1" --> "*" Patient : involves
+Communication "1" --> "*" Doctor : involves
+Communication "1" --> "*" Staff : involves
+
+@enduml
